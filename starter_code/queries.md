@@ -60,7 +60,7 @@ Limit: 1000
 
 ### 12. All the companies that have been 'deadpooled' after the third year.
 
-<!-- Your Code Goes Here -->
+
 
 ### 13. All the companies founded before 2000 that have and acquisition amount of more than 10.000.000
 
@@ -88,12 +88,14 @@ Sort: {number_of_employees: 1}
 
 ### 18. All the companies which their acquisition amount is more than 10.000.000, and currency are 'EUR'.
 
-<!-- Your Code Goes Here -->
+Filter: {"acquisitions.price_amount": {$gt: 10000000}, "acquisition.price_currency_code": {$eq: "EUR"}}
 
 ### 19. All the companies that have been acquired on the first trimester of the year. Limit the search to 10 companies, and retrieve only their `name` and `acquisition` fields.
 
-<!-- Your Code Goes Here -->
+Filter: {"acquisitions.acquired_month": {$lte: 4}}
+Project: {name: 1, acquisition: 1}
+Limit: 10
 
 ### 20. All the companies that have been founded between 2000 and 2010, but have not been acquired before 2011.
 
-<!-- Your Code Goes Here -->
+Filter: {founded_year: {$gte: 2000, $lte: 2010}, "acquisition.acquired_year": {$lt: 2011}}
